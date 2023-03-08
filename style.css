@@ -78,4 +78,10 @@ html, body {
   transform: scaleX(-1);
 }
 
+.gns {
+  width: 60px;
+  display: block;
+  margin: 30px auto 0 auto;
+}
+
 /*# sourceMappingURL=style.css.map */
