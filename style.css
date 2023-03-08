@@ -104,7 +104,7 @@ html, body {
   pointer-events: none;
   user-select: none;
 }
-@media (max-width: 420px) {
+@media (max-width: 300px) {
   .xcx {
     display: none;
   }
@@ -121,7 +121,7 @@ html, body {
 .border img {
   height: 320px;
 }
-@media (max-width: 420px) {
+@media (max-width: 300px) {
   .border {
     display: none;
   }
