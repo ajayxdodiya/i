@@ -37,11 +37,11 @@ html, body {
 }
 
 .circle-left img {
-  max-height: 40vh;
+  max-height: 200px;
 }
 
 .circle-right img {
-  max-height: 40vh;
+  max-height: 200px;
   -webkit-transform: scaleX(-1);
   transform: scaleX(-1);
 }
