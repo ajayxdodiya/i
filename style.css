@@ -99,6 +99,8 @@ html, body {
 
 .xcx {
   z-index: 5;
+  pointer-events: none;
+  user-select: none;
 }
 
 .border {
@@ -122,6 +124,14 @@ html, body {
   text-align: center;
   padding: 10px 50px 0 50px;
   color: #dfa643;
+}
+
+.box {
+  border-radius: 12px;
+  border: 1px solid #dfa643;
+  max-width: 80%;
+  margin: 15px auto;
+  padding: 10px 25px;
 }
 
 /*# sourceMappingURL=style.css.map */
