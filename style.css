@@ -2,7 +2,7 @@ html, body {
   font-family: "Teko", sans-serif;
   background-color: #000;
   color: #fff;
-  background-image: url(bg.jpg);
+  background-color: #0e2628;
   background-size: 100% auto;
   background-repeat: repeat-y;
   background-attachment: fixed;
@@ -82,6 +82,23 @@ html, body {
   width: 60px;
   display: block;
   margin: 30px auto 0 auto;
+  z-index: 5;
+}
+
+.pattrn {
+  position: fixed;
+  background-image: url("pattern.png");
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background-size: 80% auto;
+  background-repeat: repeat-y;
+  background-position: center;
+}
+
+.xcx {
+  z-index: 5;
 }
 
 /*# sourceMappingURL=style.css.map */
