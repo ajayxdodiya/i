@@ -72,6 +72,9 @@
             e1.style.display = 'block';
         }
         AOS.init();
+        if(localStorage.getItem('print') === 'true'){
+            window.print()
+        }
       </script>
 </body>
 </html>
