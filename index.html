@@ -59,36 +59,64 @@
             </div>        
         </div>
     </div>
-    
+    <div id="popup" style="display: none;">
+        <div class="popup-inner">
+            <div id="form">
+                <div class="ssnpikcer" style="margin-bottom: 15px;">
+                    <label><input name="possn" type="radio" value="श्रीमान" checked> श्रीमान</label>
+                    <label><input name="possn" type="radio" value="श्रीमती"> श्रीमती</label>
+                    <label><input name="possn" type="radio" value="कुँ. सा."> कुँ. सा.</label>
+                    <label><input name="possn" type="radio" value="ठा. सा."> ठा. सा</label>
+                </div>
+                <div class="ssnpikcer"  style="margin-bottom: 15px;">
+                    <label><input name="possng" type="radio" value="ठि."> ठि.</label>
+                    <label><input name="possng" type="radio" value="ग्रा." checked> ग्रा.</label>
+                </div>
+                <div class="ssnpikcer"  style="margin-bottom: 15px;">
+                    <label><input name="possngb" type="radio" value="1"> Barat</label>
+                    <label><input name="possngb" type="radio" value="0" checked> Pritibhoj</label>
+                </div>
+                <div class="ssnpikcer"  style="margin-bottom: 15px;">
+                    <label>Name</label>
+                    <input type="text" id="poname">
+                </div>
+                <div class="ssnpikcer"  style="margin-bottom: 15px;">
+                    <label>Address</label>
+                    <input type="text" id="poadd">
+                </div>
+                <div class="ssnpikcer"  style="margin-bottom: 15px;">                    
+                    <button>Okay</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <script>
         const queryString = window.location.search;
-        const urlParams = new URLSearchParams(queryString);        
+        const urlParams = new URLSearchParams(queryString);             
         let _name = urlParams.get('n') ? urlParams.get('n') : '';
         let _a = urlParams.get('a') ? urlParams.get('a') : '';
         let _b = urlParams.get('b') ? urlParams.get('b') : 0;
-        let _p = urlParams.get('p') ? urlParams.get('p') : 0;
         _name = _name.replaceAll('-', ' ');
         _name = _name.replaceAll('_', ' ');
         _name = _name.replaceAll('x', ' ');
         var e = document.getElementById('n');
         e.innerHTML = _name
         e.style.display = 'block';
-
         _a = _a.replaceAll('-', ' ');
         _a = _a.replaceAll('_', ' ');
         _a = _a.replaceAll('x', ' ');
         var e2 = document.getElementById('p');
         e2.innerHTML = _a
         e2.style.display = 'block';
-
         document.getElementsByTagName('title')[0].innerHTML = _name + ' 🙏 आप सादर आमंत्रित है 🙏'
         if (_b == 1) {
             var e1 = document.getElementById('_bbox');
             e1.style.display = 'block';
         }
-        if(_p == 1){
-            window.print()
-        }       
+        if (_name === '') {
+            var pop = document.getElementById('popup');
+            pop.style.display = 'block';
+        }      
       </script>
 </body>
 </html>
