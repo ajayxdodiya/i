@@ -26,6 +26,7 @@
             <div src="ganeshji.png" alt="" class="gns" data-xaos="fade-down"></div>
             <div data-xaos="fade-down">|| श्री गणेशाय नमः ||</div>        
             <div data-xaos="fade-right" id="n" style="font-size: 20px;margin-top: 15px;margin-bottom: 15px;border-bottom: 1px dashed;display: inline-block;padding: 0 10px;display: none"></div>        
+            <div data-xaos="fade-right" id="p" style="font-size: 16px;margin-top: 0px;margin-bottom: 15px;border-bottom: 1px dashed;display: inline-block;padding: 0 10px;display: none"></div>        
             <div data-xaos="fade-right">माँ कुलदेवी की असीम कृपा से</div>
             <div data-xaos="fade-right" style="font-size: 20px;margin-top: 5px;margin-bottom: 5px;display: flex;align-items: center;justify-content: center;font-weight: 600;">अजय सिंह <span data-xaos="fade-up" style="font-size: 15px;margin: 0 10px;font-weight: 400">संग</span> सोनू कुँवर</div>
             <div data-xaos="fade-left">के मंगल परिणय का शुभ प्रसंग आया है.. आपकी उपस्तिथि से ही खुशियों की महफ़िल सजेगी आपके मार्गदर्शन से ही हमारी हिम्मत बढेगी.. शौभा बढाने.. आशीर्वाद देने.. आपको आना है जरुर...</div>        
@@ -43,7 +44,7 @@
                 <div data-xaos="fade-left">ठि. खण्डीगारा</div>            
             </div>
            </div>
-            <div data-xaos="fade-left">विनीत</div>
+            <div data-xaos="fade-left" style="margin-top: 10px;">विनीत</div>
             <div data-xaos="fade-left">ठा. नागुसिंह, कुँ. जीवनसिंह, कुँ. धारासिंह,</div>
             <div data-xaos="fade-left">भं. नरेन्द्रसिंह, भं. विजयसिंह</div>
             <div data-xaos="fade-left">एवं समस्त डोडिया (पुरावत) परिवार</div>
@@ -63,6 +64,7 @@
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);        
         let _name = urlParams.get('n') ? urlParams.get('n') : '';
+        let _a = urlParams.get('a') ? urlParams.get('a') : '';
         let _b = urlParams.get('b') ? urlParams.get('b') : 0;
         let _p = urlParams.get('p') ? urlParams.get('p') : 0;
         _name = _name.replaceAll('-', ' ');
@@ -71,6 +73,14 @@
         var e = document.getElementById('n');
         e.innerHTML = _name
         e.style.display = 'block';
+
+        _a = _a.replaceAll('-', ' ');
+        _a = _a.replaceAll('_', ' ');
+        _a = _a.replaceAll('x', ' ');
+        var e2 = document.getElementById('p');
+        e2.innerHTML = _a
+        e2.style.display = 'block';
+
         document.getElementsByTagName('title')[0].innerHTML = _name + ' 🙏 आप सादर आमंत्रित है 🙏'
         if (_b == 1) {
             var e1 = document.getElementById('_bbox');
