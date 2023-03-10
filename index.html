@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="style.css?v=1.0.4">    
 </head>
 <body>
+    <button onclick="shareCanvas()">Share</button>
     <div id="wrapper">
         <div class="corner up">
             <div class="circleholder">
@@ -82,23 +83,46 @@
         html2canvas(document.querySelector("#wrapper")).then(canvas => {
             document.body.appendChild(canvas)
         });
-        html2canvas(document.querySelector("#wrapper")).then(function(canvas) {
-		canvas.toBlob(function(blob) {
-			navigator.clipboard
-				.write([
-				new ClipboardItem(
-					Object.defineProperty({}, blob.type, {
-						value: blob,
-						enumerable: true
-					})
-				)
-			])
-				.then(function() {
-				console.log("Copied to clipboard");
-				domNode.classList.remove("on");
-			});
-		});
-	    });
+        // html2canvas(document.querySelector("#wrapper")).then(function(canvas) {
+		// canvas.toBlob(function(blob) {
+		// 	const filesArray = [
+        //     new File(
+        //     [blob],
+        //     'animation.png',
+        //     {
+        //         type: blob.type,
+        //         lastModified: new Date().getTime()
+        //     }
+        //     )
+        // ];
+        // const shareData = {
+        //     files: filesArray,
+        // };
+        // navigator.share(shareData);
+		// });
+	    // });
+        async function shareCanvas() {
+        const canvasElement = document.getElementsByTagName('canvas')[0];
+        const dataUrl = canvasElement.toDataURL("image/png");
+        const blob = await (await fetch(dataUrl)).blob();
+        const filesArray = [
+            new File(
+            [blob],
+            'animation.png',
+            {
+                type: blob.type,
+                lastModified: new Date().getTime()
+            }
+            )
+        ];
+        const shareData = {
+            files: filesArray,
+        };
+        navigator.share(shareData);
+        }
+        setTimeout(function() {
+            // shareCanvas()
+        }, 2000)
       </script>
 </body>
 </html>
