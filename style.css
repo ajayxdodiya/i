@@ -19,13 +19,15 @@ html, body {
 }
 
 .gns {
-  width: 60px;
-  height: 78px;
-  background-image: url("ganeshji.svg");
+  width: 30px;
+  height: 35px;
+  background-image: url(ganeshji.svg);
   display: block;
   margin: 0px auto 10px auto;
   z-index: 5;
   background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .circleImg {
@@ -50,7 +52,6 @@ html, body {
 .box {
   border-radius: 12px;
   border: 1px dashed #dfa643;
-  max-width: 80%;
   margin: 15px auto;
   padding: 10px 15px;
 }
@@ -97,9 +98,13 @@ canvas {
 
 .cbox {
   display: flex;
+  justify-content: center;
+  width: 62%;
 }
 .cbox .box {
   margin: 10px;
+  flex: 0 0 50%;
+  min-width: 50%;
 }
 
 /*# sourceMappingURL=style.css.map */
