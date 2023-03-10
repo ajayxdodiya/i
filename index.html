@@ -61,18 +61,20 @@
         const urlParams = new URLSearchParams(queryString);        
         let _name = urlParams.get('n') ? urlParams.get('n') : '';
         let _b = urlParams.get('b') ? urlParams.get('b') : 0;
+        let _p = urlParams.get('p') ? urlParams.get('p') : 0;
         _name = _name.replaceAll('-', ' ');
         _name = _name.replaceAll('_', ' ');
         _name = _name.replaceAll('x', ' ');
         var e = document.getElementById('n');
         e.innerHTML = _name
         e.style.display = 'block';
+        document.getElementsByTagName('title')[0].innerHTML = _name + ' 🙏 आप सादर आमंत्रित है 🙏'
         if (_b == 1) {
             var e1 = document.getElementById('_bbox');
             e1.style.display = 'block';
         }
         AOS.init();
-        if(localStorage.getItem('print') === 'true'){
+        if(_p == 1){
             window.print()
         }
       </script>
