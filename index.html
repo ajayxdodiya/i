@@ -80,7 +80,7 @@
         if(_p == 1){
             window.print()
         }
-        html2canvas(document.querySelector("#wrapper")).then(canvas => {
+        html2canvas(document.querySelector("#wrapper"), { scale: 2}).then(canvas => {
             document.body.appendChild(canvas)
         });
         // html2canvas(document.querySelector("#wrapper")).then(function(canvas) {
