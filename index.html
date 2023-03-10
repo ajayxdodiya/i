@@ -25,8 +25,8 @@
         <div class="matter">
             <div src="ganeshji.png" alt="" class="gns" data-xaos="fade-down"></div>
             <div data-xaos="fade-down">|| श्री गणेशाय नमः ||</div>        
-            <div data-xaos="fade-right" id="n" style="font-size: 20px;margin-top: 15px;margin-bottom: 10px;border-bottom: 1px dashed;display: inline-block;padding: 0 10px;display: none"></div>        
-            <div data-xaos="fade-right" id="p" style="font-size: 16px;margin-top: 0px;margin-bottom: 18px;border-bottom: 1px dashed;display: inline-block;padding: 0 10px;display: none"></div>        
+            <div data-xaos="fade-right" id="n" style="font-size: 20px;margin-top: 15px;margin-bottom: 10px;border-bottom: 1px dashed;display: inline-block;padding: 0 10px;"></div>        
+            <div data-xaos="fade-right" id="p" style="font-size: 16px;margin-top: 0px;margin-bottom: 18px;border-bottom: 1px dashed;display: inline-block;padding: 0 10px;"></div>        
             <div data-xaos="fade-right">माँ कुलदेवी की असीम कृपा से</div>
             <div data-xaos="fade-right" style="font-size: 20px;margin-top: 5px;margin-bottom: 5px;display: flex;align-items: center;justify-content: center;font-weight: 600;">भं. अजय सिंह <span data-xaos="fade-up" style="font-size: 15px;margin: 0 10px;font-weight: 400">संग</span> सोनू कुँवर</div>
             <div data-xaos="fade-left">के मंगल परिणय का शुभ प्रसंग आया है.. आपकी उपस्थिति से ही खुशियों की महफ़िल सजेगी आपके मार्गदर्शन से ही हमारी हिम्मत बढेगी.. शौभा बढाने.. आशीर्वाद देने.. आपको आना है जरुर...</div>        
@@ -37,7 +37,7 @@
                 <div data-xaos="fade-left">प्रातः 10 बजे से</div>            
                 <div data-xaos="fade-left">ठि. रतनपुरा</div>            
             </div>
-            <div class="box" id="_bbox" data-xaos="fade-in" style="display: none">
+            <div class="box" id="baratbox" data-xaos="fade-in" style="display: none">
                 <div data-xaos="fade-left"  style="font-size: 18px;display: flex;align-items: center;justify-content: center"><span style="font-size: 10px;line-height: 0;margin: 0 5px;">✦</span> बारात <span style="font-size: 10px;line-height: 0;margin: 0 5px;">✦</span></div>
                 <div data-xaos="fade-left">30 मार्च 2023</div>            
                 <div data-xaos="fade-left">शाम 6 बजे</div>            
@@ -85,7 +85,7 @@
                     <input type="text" id="poadd">
                 </div>
                 <div class="ssnpikcer"  style="margin-bottom: 15px;">                    
-                    <button>Okay</button>
+                    <button onclick="genCardByForm()">Okay</button>
                 </div>
             </div>
         </div>
@@ -93,30 +93,45 @@
     <script>
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);             
-        let _name = urlParams.get('n') ? urlParams.get('n') : '';
-        let _a = urlParams.get('a') ? urlParams.get('a') : '';
-        let _b = urlParams.get('b') ? urlParams.get('b') : 0;
-        _name = _name.replaceAll('-', ' ');
-        _name = _name.replaceAll('_', ' ');
-        _name = _name.replaceAll('x', ' ');
-        var e = document.getElementById('n');
-        e.innerHTML = _name
-        e.style.display = 'block';
-        _a = _a.replaceAll('-', ' ');
-        _a = _a.replaceAll('_', ' ');
-        _a = _a.replaceAll('x', ' ');
-        var e2 = document.getElementById('p');
-        e2.innerHTML = _a
-        e2.style.display = 'block';
-        document.getElementsByTagName('title')[0].innerHTML = _name + ' 🙏 आप सादर आमंत्रित है 🙏'
-        if (_b == 1) {
-            var e1 = document.getElementById('_bbox');
-            e1.style.display = 'block';
-        }
-        if (_name === '') {
+        let urlName = urlParams.get('n') ? urlParams.get('n') : '';
+        let urlAddress = urlParams.get('a') ? urlParams.get('a') : '';
+        let urlBarat = urlParams.get('b') ? urlParams.get('b') : 0;
+        if (urlName != '') {       
+            setData(urlName, urlAddress, urlBarat)
+        } else {
             var pop = document.getElementById('popup');
             pop.style.display = 'block';
-        }      
+        }
+        function replaceData(str) {
+            let y = str ? str : '';
+            y = str.replaceAll('-', ' ');
+            y = y.replaceAll('_', ' ');
+            y = y.replaceAll('x', ' ');
+            return y;
+        }
+        function setData(name='', address='', barat='0') {
+            name = replaceData(name);
+            address = replaceData(address);
+            var xname = document.getElementById('n');
+            var xaddress = document.getElementById('p');
+            xname.innerHTML = name
+            xaddress.innerHTML = address
+            if (barat == 1) {
+                var baratbox = document.getElementById('baratbox');
+                baratbox.style.display = 'block';
+            }
+        }
+        function genCardByForm() {
+            var fname =    document.getElementById('poname').value;
+            var faddress = document.getElementById('poadd').value;
+            var fpossn = document.querySelector('input[name="possn"]:checked').value;
+            var fpossng = document.querySelector('input[name="possng"]:checked').value;
+            var fbarat = document.querySelector('input[name="possngb"]:checked').value;
+            // console.log(fname, faddress, fpossn, fpossng, fbarat)
+            setData(fpossn +' ' + fname, fpossng + ' ' + faddress, fbarat)
+            var pop = document.getElementById('popup');
+            pop.style.display = 'none';
+        }
       </script>
 </body>
 </html>
